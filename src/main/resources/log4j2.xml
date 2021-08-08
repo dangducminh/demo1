@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d{yyyy-MMM-dd HH:mm:ss} [%t] %-5level %-50c{1.} - %msg%n" />
+
+            <!-- %d : date & time, %t : thread name, %level : log level, %c : logger name, %msg : log message, %n : line separator  -->
+        </Console>
+
+        <File name="File" fileName="logs/app.log">
+            <PatternLayout
+                    pattern="%d{yyyy-MMM-dd HH:mm:ss} [%t] %-5level %-50c{1.} - %msg%n" />
+        </File>
+        <Policies>
+            <!-- rollover on startup, daily and when the file reaches
+                10 MegaBytes -->
+            <OnStartupTriggeringPolicy />
+            <SizeBasedTriggeringPolicy
+                    size="10 MB" />
+            <TimeBasedTriggeringPolicy />
+        </Policies>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+<!--             <AppenderRef ref="File" />-->
+        </Root>
+    </Loggers>
+</Configuration>
